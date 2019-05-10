@@ -24,6 +24,9 @@
 		B96182842285D5C000957141 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B96182832285D5C000957141 /* Media.xcassets */; };
 		B96182862285DCCD00957141 /* CicularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182852285DCCD00957141 /* CicularImageView.swift */; };
 		B96182892285FF1100957141 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182882285FF1100957141 /* ImageViewExtension.swift */; };
+		B961828C22860A3900957141 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961828A22860A3900957141 /* ContactDetailViewController.swift */; };
+		B961828D22860A3900957141 /* ContactDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B961828B22860A3900957141 /* ContactDetailViewController.xib */; };
+		B961828F22860A6500957141 /* ContactDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961828E22860A6500957141 /* ContactDetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		B96182832285D5C000957141 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B96182852285DCCD00957141 /* CicularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CicularImageView.swift; sourceTree = "<group>"; };
 		B96182882285FF1100957141 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		B961828A22860A3900957141 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		B961828B22860A3900957141 /* ContactDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailViewController.xib; sourceTree = "<group>"; };
+		B961828E22860A6500957141 /* ContactDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,8 @@
 				B96182722285938300957141 /* ContactsTableViewController.xib */,
 				B96182812285D48100957141 /* ContactTableViewCell.swift */,
 				B96182852285DCCD00957141 /* CicularImageView.swift */,
+				B961828A22860A3900957141 /* ContactDetailViewController.swift */,
+				B961828B22860A3900957141 /* ContactDetailViewController.xib */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 				B961826D228589D100957141 /* Coordinator.swift */,
 				B961826F22858A1D00957141 /* ApplicationCoordinator.swift */,
 				B961827C2285962D00957141 /* ContactCoordinator.swift */,
+				B961828E22860A6500957141 /* ContactDetailCoordinator.swift */,
 			);
 			path = Cordinator;
 			sourceTree = "<group>";
@@ -310,6 +319,7 @@
 				B96182492285894100957141 /* LaunchScreen.storyboard in Resources */,
 				B96182742285938300957141 /* ContactsTableViewController.xib in Resources */,
 				B96182842285D5C000957141 /* Media.xcassets in Resources */,
+				B961828D22860A3900957141 /* ContactDetailViewController.xib in Resources */,
 				B96182462285894100957141 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B961828F22860A6500957141 /* ContactDetailCoordinator.swift in Sources */,
 				B961823F2285893F00957141 /* AppDelegate.swift in Sources */,
 				B96182782285941200957141 /* ContactModel.swift in Sources */,
 				B96182862285DCCD00957141 /* CicularImageView.swift in Sources */,
@@ -345,6 +356,7 @@
 				B961826E228589D100957141 /* Coordinator.swift in Sources */,
 				B96182822285D48100957141 /* ContactTableViewCell.swift in Sources */,
 				B961827022858A1D00957141 /* ApplicationCoordinator.swift in Sources */,
+				B961828C22860A3900957141 /* ContactDetailViewController.swift in Sources */,
 				B961827F2285B86800957141 /* ContactNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,10 +48,6 @@ class ContactTableViewCell: UITableViewCell {
         favouriteImageView.contentMode = .scaleAspectFit
         favouriteImageView.image = UIImage.init(named: "home_favourite")
         self.addSubview(favouriteImageView)
-//        userImageView.translatesAutoresizingMaskIntoConstraints = false
-//        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        favouriteImageView.translatesAutoresizingMaskIntoConstraints = false
-
     }
     
     override func layoutSubviews() {

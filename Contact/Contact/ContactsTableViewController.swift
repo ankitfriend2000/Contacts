@@ -8,12 +8,16 @@
 
 import UIKit
 
+protocol ContactsTableViewDelegate : class {
+    func didSelectContactWithViewModel(_ viewModel : ContactViewModel)
+}
+
 class ContactsTableViewController: UITableViewController {
     
     //Constants
     let rowHeight : CGFloat = 64.0
     let sectionHeaderHeight : CGFloat = 28.0
-    
+    weak var delegate : ContactsTableViewDelegate?
     //datasources
     private var contactViewModelArray : [String :[ContactViewModel]] = [:]
     private var firstCharaterArray : [String] = []
@@ -98,5 +102,10 @@ class ContactsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sectionHeaderHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModel = self.contactViewModelArray[firstCharaterArray[indexPath.section]]![indexPath.row]
+        delegate?.didSelectContactWithViewModel(viewModel)
     }
 }
