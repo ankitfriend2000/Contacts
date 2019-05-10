@@ -12,14 +12,18 @@ import UIKit
 class ApplicationCoordinator: Coordinator {
     let window : UIWindow
     let rootViewController : UINavigationController
+    let contactCoordinator : ContactCoordinator
     
     init(window : UIWindow) {
         self.window = window
         rootViewController = UINavigationController()
+        contactCoordinator = ContactCoordinator(presenter: rootViewController)
+        
     }
     
     func start() {
         window.rootViewController = rootViewController
+        contactCoordinator.start()
         window.makeKeyAndVisible()
     }
 }
