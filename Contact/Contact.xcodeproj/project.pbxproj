@@ -19,6 +19,7 @@
 		B96182782285941200957141 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182772285941200957141 /* ContactModel.swift */; };
 		B961827A228594CB00957141 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9618279228594CB00957141 /* ContactViewModel.swift */; };
 		B961827D2285962D00957141 /* ContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961827C2285962D00957141 /* ContactCoordinator.swift */; };
+		B961827F2285B86800957141 /* ContactNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961827E2285B86800957141 /* ContactNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B96182772285941200957141 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		B9618279228594CB00957141 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		B961827C2285962D00957141 /* ContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCoordinator.swift; sourceTree = "<group>"; };
+		B961827E2285B86800957141 /* ContactNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		B961823D2285893F00957141 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				B96182802285C4AA00957141 /* Assets */,
 				B961827B2285953E00957141 /* Network */,
 				B9618276228593EB00957141 /* Model */,
 				B9618275228593D700957141 /* View Model */,
@@ -168,8 +171,16 @@
 		B961827B2285953E00957141 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B961827E2285B86800957141 /* ContactNetworkManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		B96182802285C4AA00957141 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +321,7 @@
 				B961827D2285962D00957141 /* ContactCoordinator.swift in Sources */,
 				B961826E228589D100957141 /* Coordinator.swift in Sources */,
 				B961827022858A1D00957141 /* ApplicationCoordinator.swift in Sources */,
+				B961827F2285B86800957141 /* ContactNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

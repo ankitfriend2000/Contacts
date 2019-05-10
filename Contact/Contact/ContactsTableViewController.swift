@@ -10,32 +10,70 @@ import UIKit
 
 class ContactsTableViewController: UITableViewController {
     
-    var contactViewModelArray : [ContactViewModel] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    var contactViewModelArray : [String :[ContactViewModel]] = [:]
+    var firstCharaterArray : [String] = []
+    
+    let networkManager = ContactNetworkManager()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "contactIdentifier")
+        self.tableView.rowHeight = 65
+        self.tableView.tableFooterView = UIView.init()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.title = "Contact"
+        fetchContacts()
+        
+    }
+    
+    func fetchContacts() {
+        
+        let successHandler: ([ContactModel]) -> Void = { (contactModelArray) in
+            let contactArray = contactModelArray.map({ return ContactViewModel.init(contact: $0)}).sorted(by: { (first, second) -> Bool in
+                return first.fullname < second.fullname
+            })
+            self.contactViewModelArray = contactArray.reduce([:]) { (dictionary, contactViewModel) -> [String: [ContactViewModel]] in
+                var dictionary = dictionary
+                let firstChar = String(contactViewModel.fullname.first!)
+                if dictionary[firstChar] == nil {
+                    self.firstCharaterArray.append(firstChar)
+                    dictionary[firstChar] = [contactViewModel]
+                }else {
+                    var contactModelArray = dictionary[firstChar]!
+                    contactModelArray.append(contactViewModel)
+                    dictionary[firstChar] = contactModelArray
+                }
+                return dictionary
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        let errorHandler: (String) -> Void = { (error) in
+            print(error)
+        }
+        
+        
+        networkManager.get(urlString: "https://gojek-contacts-app.herokuapp.com/contacts.json", headers: [:], successHandler: successHandler, errorHandler: errorHandler)
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return contactViewModelArray.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return self.contactViewModelArray[firstCharaterArray[section]]!.count
     }
 
 
@@ -46,51 +84,26 @@ class ContactsTableViewController: UITableViewController {
 
         return cell
     }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.textLabel?.text = self.contactViewModelArray[firstCharaterArray[indexPath.section]]![indexPath.row].fullname
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return firstCharaterArray
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return firstCharaterArray[section]
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 28
     }
-    */
 
-    /*
-    // MARK: - Navigation
+//    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+//        return firstCharaterArray.inde
+//    }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
 }
