@@ -10,28 +10,27 @@ import UIKit
 
 class ContactsTableViewController: UITableViewController {
     
-    var contactViewModelArray : [String :[ContactViewModel]] = [:]
-    var firstCharaterArray : [String] = []
+    //Constants
+    let rowHeight : CGFloat = 64.0
+    let sectionHeaderHeight : CGFloat = 28.0
     
-    let networkManager = ContactNetworkManager()
+    //datasources
+    private var contactViewModelArray : [String :[ContactViewModel]] = [:]
+    private var firstCharaterArray : [String] = []
     
-
+    //network layer
+    private let networkManager = ContactNetworkManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "contactIdentifier")
-        self.tableView.rowHeight = 65
+        self.tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: "contactIdentifier")
+        self.tableView.rowHeight = rowHeight
         self.tableView.tableFooterView = UIView.init()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.title = "Contact"
         fetchContacts()
-        
     }
     
-    func fetchContacts() {
+    private func fetchContacts() {
         
         let successHandler: ([ContactModel]) -> Void = { (contactModelArray) in
             let contactArray = contactModelArray.map({ return ContactViewModel.init(contact: $0)}).sorted(by: { (first, second) -> Bool in
@@ -78,15 +77,15 @@ class ContactsTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell : ContactTableViewCell = tableView.dequeueReusableCell(withIdentifier: "contactIdentifier", for: indexPath) as! ContactTableViewCell
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.textLabel?.text = self.contactViewModelArray[firstCharaterArray[indexPath.section]]![indexPath.row].fullname
+        let contactCell : ContactTableViewCell = cell as! ContactTableViewCell
+        contactCell.viewModel = self.contactViewModelArray[firstCharaterArray[indexPath.section]]![indexPath.row]
+        
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -98,12 +97,6 @@ class ContactsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 28
+        return sectionHeaderHeight
     }
-
-//    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-//        return firstCharaterArray.inde
-//    }
-
-    
 }

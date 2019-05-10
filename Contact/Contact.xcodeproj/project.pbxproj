@@ -20,6 +20,10 @@
 		B961827A228594CB00957141 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9618279228594CB00957141 /* ContactViewModel.swift */; };
 		B961827D2285962D00957141 /* ContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961827C2285962D00957141 /* ContactCoordinator.swift */; };
 		B961827F2285B86800957141 /* ContactNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961827E2285B86800957141 /* ContactNetworkManager.swift */; };
+		B96182822285D48100957141 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182812285D48100957141 /* ContactTableViewCell.swift */; };
+		B96182842285D5C000957141 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B96182832285D5C000957141 /* Media.xcassets */; };
+		B96182862285DCCD00957141 /* CicularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182852285DCCD00957141 /* CicularImageView.swift */; };
+		B96182892285FF1100957141 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182882285FF1100957141 /* ImageViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		B9618279228594CB00957141 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		B961827C2285962D00957141 /* ContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCoordinator.swift; sourceTree = "<group>"; };
 		B961827E2285B86800957141 /* ContactNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactNetworkManager.swift; sourceTree = "<group>"; };
+		B96182812285D48100957141 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		B96182832285D5C000957141 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		B96182852285DCCD00957141 /* CicularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CicularImageView.swift; sourceTree = "<group>"; };
+		B96182882285FF1100957141 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,7 @@
 		B961823D2285893F00957141 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				B96182872285FEFA00957141 /* Extension */,
 				B96182802285C4AA00957141 /* Assets */,
 				B961827B2285953E00957141 /* Network */,
 				B9618276228593EB00957141 /* Model */,
@@ -120,6 +129,8 @@
 				B961824A2285894100957141 /* Info.plist */,
 				B96182712285938300957141 /* ContactsTableViewController.swift */,
 				B96182722285938300957141 /* ContactsTableViewController.xib */,
+				B96182812285D48100957141 /* ContactTableViewCell.swift */,
+				B96182852285DCCD00957141 /* CicularImageView.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -179,8 +190,17 @@
 		B96182802285C4AA00957141 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B96182832285D5C000957141 /* Media.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		B96182872285FEFA00957141 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B96182882285FF1100957141 /* ImageViewExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +309,7 @@
 			files = (
 				B96182492285894100957141 /* LaunchScreen.storyboard in Resources */,
 				B96182742285938300957141 /* ContactsTableViewController.xib in Resources */,
+				B96182842285D5C000957141 /* Media.xcassets in Resources */,
 				B96182462285894100957141 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,10 +337,13 @@
 			files = (
 				B961823F2285893F00957141 /* AppDelegate.swift in Sources */,
 				B96182782285941200957141 /* ContactModel.swift in Sources */,
+				B96182862285DCCD00957141 /* CicularImageView.swift in Sources */,
 				B96182732285938300957141 /* ContactsTableViewController.swift in Sources */,
 				B961827A228594CB00957141 /* ContactViewModel.swift in Sources */,
+				B96182892285FF1100957141 /* ImageViewExtension.swift in Sources */,
 				B961827D2285962D00957141 /* ContactCoordinator.swift in Sources */,
 				B961826E228589D100957141 /* Coordinator.swift in Sources */,
+				B96182822285D48100957141 /* ContactTableViewCell.swift in Sources */,
 				B961827022858A1D00957141 /* ApplicationCoordinator.swift in Sources */,
 				B961827F2285B86800957141 /* ContactNetworkManager.swift in Sources */,
 			);

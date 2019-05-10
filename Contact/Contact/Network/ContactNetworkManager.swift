@@ -12,7 +12,7 @@ typealias NetworkCompletionHandler = (Data?, URLResponse?, Error?) -> Void
 typealias ErrorHandler = (String) -> Void
 
 class ContactNetworkManager {
-    let networkQueue = DispatchQueue.init(label: "networkDispatchQueue", qos: .background, attributes: .concurrent)
+    private let networkQueue = DispatchQueue.init(label: "networkDispatchQueue", qos: .background, attributes: .concurrent)
     static let genericError = "Something went wrong. Please try again later"
     func get<T: Decodable>(urlString: String,
                            headers: [String: String] = [:],
@@ -52,7 +52,7 @@ class ContactNetworkManager {
     }
     
     private func isSuccessCode(_ statusCode: Int) -> Bool {
-        return statusCode >= 200 && statusCode < 300
+        return statusCode == 200
     }
     
     private func isSuccessCode(_ response: URLResponse?) -> Bool {

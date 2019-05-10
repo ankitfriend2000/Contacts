@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class ApplicationCoordinator: Coordinator {
-    let window : UIWindow
-    let rootViewController : UINavigationController
-    let contactCoordinator : ContactCoordinator
+    private let window : UIWindow
+    private let rootViewController : UINavigationController
+    private let contactCoordinator : ContactCoordinator
     
     init(window : UIWindow) {
         self.window = window
