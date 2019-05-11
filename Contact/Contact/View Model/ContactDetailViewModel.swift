@@ -15,9 +15,14 @@ struct ContactDetailDataSourceModel {
 
 struct ContactDetailViewModel {
     
+    var phoneNumber : String
+    var emailAddress : String
+    
     var contactDetailDataSource = [ContactDetailDataSourceModel]()
     init(contactDetail : ContactDetailModel) {
         contactDetailDataSource.append(ContactDetailDataSourceModel.init(title: "mobile", description: contactDetail.phoneNumber))
         contactDetailDataSource.append(ContactDetailDataSourceModel.init(title: "email", description: contactDetail.email))
+        phoneNumber = contactDetail.phoneNumber
+        emailAddress = contactDetail.email
     }
 }

@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactDetailViewController" customModule="Contact" customModuleProvider="target">
             <connections>
                 <outlet property="contactDetailTableView" destination="mjS-vT-lKA" id="Dwj-aV-OHq"/>
-                <outlet property="favouriteImageView" destination="KBA-i1-FkB" id="1wk-To-7hO"/>
+                <outlet property="favouriteButton" destination="vWq-1z-6Pr" id="AUc-T6-xwc"/>
                 <outlet property="headerContainerView" destination="TpI-FG-gAJ" id="OcY-78-8Ud"/>
                 <outlet property="userImageView" destination="kuw-bP-6dz" id="Yn0-zX-Mbi"/>
                 <outlet property="userNameLabel" destination="Ojy-Ov-gWX" id="oOL-OQ-9IJ"/>
@@ -26,67 +26,80 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpI-FG-gAJ">
-                    <rect key="frame" x="0.0" y="35" width="414" height="335"/>
+                    <rect key="frame" x="0.0" y="35" width="414" height="300"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojy-Ov-gWX">
-                            <rect key="frame" x="181" y="212" width="52" height="24"/>
+                            <rect key="frame" x="181" y="178" width="52" height="24"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="luT-MA-DWV">
-                            <rect key="frame" x="44" y="264.5" width="326" height="58.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="luT-MA-DWV">
+                            <rect key="frame" x="44" y="227.5" width="326" height="60.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Jo-hn-vrc">
-                                    <rect key="frame" x="0.0" y="0.0" width="51" height="58.5"/>
+                                <stackView opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4Jo-hn-vrc">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="60.5"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_button" translatesAutoresizingMaskIntoConstraints="NO" id="Bfh-oC-2ln" customClass="CicularImageView" customModule="Contact" customModuleProvider="target">
-                                            <rect key="frame" x="3.5" y="0.0" width="44" height="44"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdf-1B-5st">
-                                            <rect key="frame" x="0.0" y="44" width="51" height="14.5"/>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-zm-p84">
+                                            <rect key="frame" x="26" y="0.0" width="44" height="44"/>
+                                            <state key="normal" image="message_button"/>
+                                            <connections>
+                                                <action selector="messageTapped:" destination="-1" eventType="touchUpInside" id="Phn-ij-bkL"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdf-1B-5st">
+                                            <rect key="frame" x="22.5" y="46" width="51" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TPh-hl-DJU">
-                                    <rect key="frame" x="95" y="0.0" width="45" height="58.5"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="TPh-hl-DJU">
+                                    <rect key="frame" x="126" y="0.0" width="45" height="60.5"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call_button" translatesAutoresizingMaskIntoConstraints="NO" id="5nv-I2-FkY" customClass="CicularImageView" customModule="Contact" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cg-HU-Rgi">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="44"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29r-4q-bQu">
-                                            <rect key="frame" x="12.5" y="44" width="19.5" height="14.5"/>
+                                            <state key="normal" image="call_button"/>
+                                            <connections>
+                                                <action selector="callTapped:" destination="-1" eventType="touchUpInside" id="CK0-KU-zau"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29r-4q-bQu">
+                                            <rect key="frame" x="13" y="46" width="19.5" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZM8-dW-8FO">
-                                    <rect key="frame" x="186.5" y="0.0" width="45" height="58.5"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZM8-dW-8FO">
+                                    <rect key="frame" x="201" y="0.0" width="45" height="60.5"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_button" translatesAutoresizingMaskIntoConstraints="NO" id="oOn-MA-ml9" customClass="CicularImageView" customModule="Contact" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KV8-S2-9BP">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="44"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLW-Mw-3kT">
-                                            <rect key="frame" x="7.5" y="44" width="30" height="14.5"/>
+                                            <state key="normal" image="email_button"/>
+                                            <connections>
+                                                <action selector="emailTapped:" destination="-1" eventType="touchUpInside" id="BHz-SS-KKw"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLW-Mw-3kT">
+                                            <rect key="frame" x="7.5" y="46" width="30" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Jas-kK-Dcy">
-                                    <rect key="frame" x="276" y="0.0" width="50" height="58.5"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Jas-kK-Dcy">
+                                    <rect key="frame" x="276" y="0.0" width="50" height="60.5"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favourite_button_selected" translatesAutoresizingMaskIntoConstraints="NO" id="KBA-i1-FkB" customClass="CicularImageView" customModule="Contact" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWq-1z-6Pr">
                                             <rect key="frame" x="3" y="0.0" width="44" height="44"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="favourite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FX-uS-mEz">
-                                            <rect key="frame" x="0.0" y="44" width="50" height="14.5"/>
+                                            <state key="normal" image="favourite_button"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="favourite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FX-uS-mEz">
+                                            <rect key="frame" x="0.0" y="46" width="50" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -96,7 +109,7 @@
                             </subviews>
                         </stackView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_photo" translatesAutoresizingMaskIntoConstraints="NO" id="kuw-bP-6dz">
-                            <rect key="frame" x="147" y="84" width="120" height="120"/>
+                            <rect key="frame" x="147" y="50" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="dGI-FM-yO5"/>
                                 <constraint firstAttribute="width" constant="120" id="tLP-gb-6le"/>
@@ -105,17 +118,18 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="kuw-bP-6dz" firstAttribute="centerX" secondItem="Ojy-Ov-gWX" secondAttribute="centerX" id="5Yr-4l-cGB"/>
                         <constraint firstItem="Ojy-Ov-gWX" firstAttribute="top" secondItem="kuw-bP-6dz" secondAttribute="bottom" constant="8" id="DGY-jK-0dx"/>
                         <constraint firstAttribute="bottom" secondItem="luT-MA-DWV" secondAttribute="bottom" constant="12" id="L6e-wN-iiB"/>
                         <constraint firstItem="Ojy-Ov-gWX" firstAttribute="centerX" secondItem="luT-MA-DWV" secondAttribute="centerX" id="Li1-Bi-4RE"/>
                         <constraint firstAttribute="trailing" secondItem="luT-MA-DWV" secondAttribute="trailing" constant="44" id="MeQ-DG-fBx"/>
-                        <constraint firstItem="kuw-bP-6dz" firstAttribute="top" secondItem="TpI-FG-gAJ" secondAttribute="top" constant="84" id="Nej-Su-Coc"/>
+                        <constraint firstItem="kuw-bP-6dz" firstAttribute="top" secondItem="TpI-FG-gAJ" secondAttribute="top" constant="50" id="Nej-Su-Coc"/>
                         <constraint firstItem="luT-MA-DWV" firstAttribute="leading" secondItem="TpI-FG-gAJ" secondAttribute="leading" constant="44" id="a1X-yo-XsN"/>
-                        <constraint firstItem="kuw-bP-6dz" firstAttribute="centerX" secondItem="Ojy-Ov-gWX" secondAttribute="centerX" id="hRC-W6-58L"/>
+                        <constraint firstAttribute="height" constant="300" id="mB2-J2-BAJ"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mjS-vT-lKA">
-                    <rect key="frame" x="0.0" y="370" width="414" height="492"/>
+                    <rect key="frame" x="0.0" y="335" width="414" height="527"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
@@ -124,7 +138,6 @@
                 <constraint firstItem="TpI-FG-gAJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="0PL-Cr-4q2"/>
                 <constraint firstItem="TpI-FG-gAJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5ye-us-Vuc"/>
                 <constraint firstItem="mjS-vT-lKA" firstAttribute="top" secondItem="TpI-FG-gAJ" secondAttribute="bottom" id="LAj-bl-UAo"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TpI-FG-gAJ" secondAttribute="bottom" constant="492" id="Sa4-bQ-vf9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mjS-vT-lKA" secondAttribute="trailing" id="Wv9-0E-kpw"/>
                 <constraint firstItem="mjS-vT-lKA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cLh-4V-lRY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mjS-vT-lKA" secondAttribute="bottom" id="dY2-vS-aba"/>
@@ -137,7 +150,7 @@
     <resources>
         <image name="call_button" width="45" height="44"/>
         <image name="email_button" width="45" height="44"/>
-        <image name="favourite_button_selected" width="44" height="44"/>
+        <image name="favourite_button" width="44" height="44"/>
         <image name="message_button" width="44" height="44"/>
         <image name="placeholder_photo" width="126" height="126"/>
     </resources>

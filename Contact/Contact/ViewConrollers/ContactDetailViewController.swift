@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import MessageUI
 
 class ContactDetailViewController: UIViewController {
     
     @IBOutlet weak var headerContainerView: UIView!
     
+    @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
-    
-    @IBOutlet weak var favouriteImageView: CicularImageView!
     
     @IBOutlet weak var contactDetailTableView: UITableView!
     
@@ -59,6 +59,48 @@ class ContactDetailViewController: UIViewController {
         fetchContactsDetail()
     }
     
+    @IBAction func messageTapped(_ sender: Any) {
+        
+        guard let phoneNumber = contactDetailViewModel?.phoneNumber else {
+            return
+        }
+        let sms: String = "sms:+" + phoneNumber
+        let strURL: String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        UIApplication.shared.open(URL.init(string: strURL)!, options: [:], completionHandler: nil)
+    }
+
+    
+    @IBAction func callTapped(_ sender: Any) {
+        guard let phoneNumber = contactDetailViewModel?.phoneNumber else {
+            return
+        }
+        let number = URL(string: "tel://" + phoneNumber)
+        UIApplication.shared.open(number!, options: [:], completionHandler: nil)
+
+    }
+    
+    
+    @IBAction func emailTapped(_ sender: Any) {
+        guard let email = contactDetailViewModel?.emailAddress else {
+            return
+        }
+        if !MFMailComposeViewController.canSendMail() {
+            print("Mail services are not available")
+            return
+        }
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        
+        // Configure the fields of the interface.
+        composeVC.setToRecipients([email])
+        composeVC.setSubject("Hello!")
+        composeVC.setMessageBody("Hello from Go-JEK", isHTML: false)
+        
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+        
+    }
+    
     private func findShadowImage(under view: UIView) -> UIImageView? {
         if view is UIImageView && view.bounds.size.height <= 1 {
             return (view as! UIImageView)
@@ -97,7 +139,7 @@ class ContactDetailViewController: UIViewController {
     
     func initializeHeaderView() {
         userNameLabel.text = viewModel?.fullname
-        favouriteImageView.image = UIImage.init(named: viewModel!.favouriteImageUrl)
+        favouriteButton.setImage(UIImage.init(named: viewModel!.favouriteImageUrl), for: .normal)
         if let imageUrl = viewModel?.imageUrl {
             userImageView.downloadImage(from: URL.init(string: imageUrl)!)
         }
@@ -159,4 +201,13 @@ extension ContactDetailViewController : UITableViewDataSource {
     }
     
     
+}
+
+extension ContactDetailViewController : MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.contactDetailTableView.reloadData()
+        }
+    }
 }
