@@ -17,6 +17,7 @@ class ApplicationCoordinator: Coordinator {
     init(window : UIWindow) {
         self.window = window
         rootViewController = UINavigationController()
+        rootViewController.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         contactCoordinator = ContactCoordinator(presenter: rootViewController)
         
     }

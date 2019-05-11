@@ -14,6 +14,7 @@ struct ContactViewModel {
     var imageUrl : String?
     var isFavourite : Bool
     var detailUrl : String
+    var favouriteImageUrl : String
     
     init(contact: ContactModel) {
         fullname = contact.firstName + " " + contact.lastName
@@ -23,6 +24,11 @@ struct ContactViewModel {
         }
         isFavourite = contact.favorite
         detailUrl = contact.url
+        if isFavourite {
+            favouriteImageUrl = "favourite_button_selected"
+        } else {
+            favouriteImageUrl = "favourite_button"
+        }
     }
     
 }
