@@ -12,6 +12,11 @@ class TitleDescriptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var descriotion: UILabel!
     @IBOutlet weak var title: UILabel!
+    private let titleColor : UIColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 0.5)
+    private let descriptionColor : UIColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 1.0)
+
+    
+
     var titleDescriptionModel : ContactDetailDataSourceModel! {
         didSet {
             title.text = titleDescriptionModel.title
@@ -22,6 +27,8 @@ class TitleDescriptionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        title.textColor = titleColor
+        descriotion.textColor = descriptionColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

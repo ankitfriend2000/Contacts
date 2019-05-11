@@ -52,7 +52,7 @@ class ContactDetailViewController: UIViewController {
         footerView?.addSubview(label)
         footerView?.backgroundColor = UIColor.white
         self.contactDetailTableView.tableFooterView = footerView
-        self.contactDetailTableView.backgroundColor = UIColor.lightGray
+        self.contactDetailTableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         contactDetailTableView.register(UINib(nibName: "TitleDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "contactDetail")
 
         initializeHeaderView()
@@ -79,12 +79,14 @@ class ContactDetailViewController: UIViewController {
             shadowImageView = findShadowImage(under: navigationController!.navigationBar)
         }
         shadowImageView?.isHidden = true
+        self.navigationController?.navigationBar.isTranslucent = true
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super .viewWillDisappear(animated)
         shadowImageView?.isHidden = false
-
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -140,9 +142,15 @@ extension ContactDetailViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactDetail", for: indexPath) as! TitleDescriptionTableViewCell
         cell.selectionStyle = .none
-        cell.backgroundColor = UIColor.lightGray
+        cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         return cell
 
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView.init()
+        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+        return view
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

@@ -31,6 +31,7 @@
 		B9618297228702F500957141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9618296228702F500957141 /* Assets.xcassets */; };
 		B961829A2287036400957141 /* TitleDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182982287036400957141 /* TitleDescriptionTableViewCell.swift */; };
 		B961829B2287036400957141 /* TitleDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96182992287036400957141 /* TitleDescriptionTableViewCell.xib */; };
+		B961829D22870B3200957141 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961829C22870B3200957141 /* ImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		B9618296228702F500957141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B96182982287036400957141 /* TitleDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		B96182992287036400957141 /* TitleDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleDescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		B961829C22870B3200957141 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				B96182882285FF1100957141 /* ImageViewExtension.swift */,
+				B961829C22870B3200957141 /* ImageExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				B961827A228594CB00957141 /* ContactViewModel.swift in Sources */,
 				B96182892285FF1100957141 /* ImageViewExtension.swift in Sources */,
 				B961827D2285962D00957141 /* ContactCoordinator.swift in Sources */,
+				B961829D22870B3200957141 /* ImageExtension.swift in Sources */,
 				B961826E228589D100957141 /* Coordinator.swift in Sources */,
 				B96182822285D48100957141 /* ContactTableViewCell.swift in Sources */,
 				B961827022858A1D00957141 /* ApplicationCoordinator.swift in Sources */,
