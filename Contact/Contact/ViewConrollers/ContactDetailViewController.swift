@@ -9,6 +9,10 @@
 import UIKit
 import MessageUI
 
+protocol ContactDetailViewDelegate : class {
+    func didClickEditButtonWithModel(_ viewModel:ContactDetailViewModel?)
+}
+
 class ContactDetailViewController: UIViewController {
     
     @IBOutlet weak var headerContainerView: UIView!
@@ -28,12 +32,16 @@ class ContactDetailViewController: UIViewController {
     var contactDetailViewModel : ContactDetailViewModel?
     private var shadowImageView: UIImageView?
     private let gradient : CAGradientLayer = CAGradientLayer()
+    private var editButton : UIBarButtonItem?
+    weak var delegate : ContactDetailViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = self.contactGreen
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Edit", style: .done, target: self, action: #selector(rightButtonClicked))
+        
         self.gradient.colors = [UIColor.white.cgColor, contactGreen.cgColor]
         self.gradient.locations = [0, 1.0]
         self.gradient.opacity = 0.30
@@ -41,7 +49,6 @@ class ContactDetailViewController: UIViewController {
         
         self.contactDetailTableView.delegate = self
         self.contactDetailTableView.dataSource = self
-        self.userImageView.layer.cornerRadius = self.userImageView.frame.width/2
         self.userImageView.layer.borderColor = UIColor.white.cgColor
         self.userImageView.layer.borderWidth = 3
         
@@ -57,6 +64,37 @@ class ContactDetailViewController: UIViewController {
 
         initializeHeaderView()
         fetchContactsDetail()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if shadowImageView == nil {
+            shadowImageView = findShadowImage(under: navigationController!.navigationBar)
+        }
+        shadowImageView?.isHidden = true
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        DispatchQueue.main.async {
+            self.contactDetailTableView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        shadowImageView?.isHidden = false
+        self.navigationController?.navigationBar.isTranslucent = false
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        footerView?.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 40)
+        self.gradient.frame = self.headerContainerView.bounds
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.width/2
+
     }
     
     @IBAction func messageTapped(_ sender: Any) {
@@ -114,27 +152,10 @@ class ContactDetailViewController: UIViewController {
         return nil
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
-        
-        if shadowImageView == nil {
-            shadowImageView = findShadowImage(under: navigationController!.navigationBar)
-        }
-        shadowImageView?.isHidden = true
-        self.navigationController?.navigationBar.isTranslucent = true
 
-    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super .viewWillDisappear(animated)
-        shadowImageView?.isHidden = false
-        self.navigationController?.navigationBar.isTranslucent = false
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        footerView?.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 40)
-        self.gradient.frame = self.headerContainerView.bounds
+    @objc func rightButtonClicked() {
+        self.delegate?.didClickEditButtonWithModel(contactDetailViewModel)
     }
     
     func initializeHeaderView() {
@@ -206,8 +227,5 @@ extension ContactDetailViewController : UITableViewDataSource {
 extension ContactDetailViewController : MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
-        DispatchQueue.main.async {
-            self.contactDetailTableView.reloadData()
-        }
     }
 }

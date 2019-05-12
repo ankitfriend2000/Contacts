@@ -32,6 +32,11 @@
 		B961829A2287036400957141 /* TitleDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182982287036400957141 /* TitleDescriptionTableViewCell.swift */; };
 		B961829B2287036400957141 /* TitleDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96182992287036400957141 /* TitleDescriptionTableViewCell.xib */; };
 		B961829D22870B3200957141 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961829C22870B3200957141 /* ImageExtension.swift */; };
+		B96182A02287EA9B00957141 /* AddOrUpdateContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B961829E2287EA9B00957141 /* AddOrUpdateContactViewController.swift */; };
+		B96182A12287EA9B00957141 /* AddOrUpdateContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B961829F2287EA9B00957141 /* AddOrUpdateContactViewController.xib */; };
+		B96182A32287EFCB00957141 /* AddOrUpdateContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A22287EFCB00957141 /* AddOrUpdateContactCoordinator.swift */; };
+		B96182A622882C3C00957141 /* AddUpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A422882C3C00957141 /* AddUpdateTableViewCell.swift */; };
+		B96182A722882C3C00957141 /* AddUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,11 @@
 		B96182982287036400957141 /* TitleDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		B96182992287036400957141 /* TitleDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		B961829C22870B3200957141 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		B961829E2287EA9B00957141 /* AddOrUpdateContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrUpdateContactViewController.swift; sourceTree = "<group>"; };
+		B961829F2287EA9B00957141 /* AddOrUpdateContactViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddOrUpdateContactViewController.xib; sourceTree = "<group>"; };
+		B96182A22287EFCB00957141 /* AddOrUpdateContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrUpdateContactCoordinator.swift; sourceTree = "<group>"; };
+		B96182A422882C3C00957141 /* AddUpdateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdateTableViewCell.swift; sourceTree = "<group>"; };
+		B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddUpdateTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +185,7 @@
 				B961826F22858A1D00957141 /* ApplicationCoordinator.swift */,
 				B961827C2285962D00957141 /* ContactCoordinator.swift */,
 				B961828E22860A6500957141 /* ContactDetailCoordinator.swift */,
+				B96182A22287EFCB00957141 /* AddOrUpdateContactCoordinator.swift */,
 			);
 			path = Cordinator;
 			sourceTree = "<group>";
@@ -229,6 +240,8 @@
 				B961828B22860A3900957141 /* ContactDetailViewController.xib */,
 				B96182712285938300957141 /* ContactsTableViewController.swift */,
 				B96182722285938300957141 /* ContactsTableViewController.xib */,
+				B961829E2287EA9B00957141 /* AddOrUpdateContactViewController.swift */,
+				B961829F2287EA9B00957141 /* AddOrUpdateContactViewController.xib */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -239,6 +252,8 @@
 				B96182812285D48100957141 /* ContactTableViewCell.swift */,
 				B96182982287036400957141 /* TitleDescriptionTableViewCell.swift */,
 				B96182992287036400957141 /* TitleDescriptionTableViewCell.xib */,
+				B96182A422882C3C00957141 /* AddUpdateTableViewCell.swift */,
+				B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -349,8 +364,10 @@
 			files = (
 				B96182492285894100957141 /* LaunchScreen.storyboard in Resources */,
 				B96182742285938300957141 /* ContactsTableViewController.xib in Resources */,
+				B96182A722882C3C00957141 /* AddUpdateTableViewCell.xib in Resources */,
 				B96182842285D5C000957141 /* Media.xcassets in Resources */,
 				B961829B2287036400957141 /* TitleDescriptionTableViewCell.xib in Resources */,
+				B96182A12287EA9B00957141 /* AddOrUpdateContactViewController.xib in Resources */,
 				B961828D22860A3900957141 /* ContactDetailViewController.xib in Resources */,
 				B9618297228702F500957141 /* Assets.xcassets in Resources */,
 			);
@@ -382,9 +399,12 @@
 				B961823F2285893F00957141 /* AppDelegate.swift in Sources */,
 				B96182782285941200957141 /* ContactModel.swift in Sources */,
 				B96182862285DCCD00957141 /* CicularImageView.swift in Sources */,
+				B96182A02287EA9B00957141 /* AddOrUpdateContactViewController.swift in Sources */,
 				B96182732285938300957141 /* ContactsTableViewController.swift in Sources */,
 				B961827A228594CB00957141 /* ContactViewModel.swift in Sources */,
+				B96182A32287EFCB00957141 /* AddOrUpdateContactCoordinator.swift in Sources */,
 				B96182892285FF1100957141 /* ImageViewExtension.swift in Sources */,
+				B96182A622882C3C00957141 /* AddUpdateTableViewCell.swift in Sources */,
 				B961827D2285962D00957141 /* ContactCoordinator.swift in Sources */,
 				B961829D22870B3200957141 /* ImageExtension.swift in Sources */,
 				B961826E228589D100957141 /* Coordinator.swift in Sources */,

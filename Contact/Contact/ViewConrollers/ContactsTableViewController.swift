@@ -27,11 +27,16 @@ class ContactsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addButtonClicked))
         self.tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: "contactIdentifier")
         self.tableView.rowHeight = rowHeight
         self.tableView.tableFooterView = UIView.init()
         self.title = "Contact"
         fetchContacts()
+    }
+    
+    @objc func addButtonClicked() {
+        
     }
     
     private func fetchContacts() {

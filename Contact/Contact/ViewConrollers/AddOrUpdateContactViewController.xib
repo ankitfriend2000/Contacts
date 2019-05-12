@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddOrUpdateContactViewController" customModule="Contact" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraButton" destination="PDr-vT-sNG" id="Y9o-yX-Muj"/>
+                <outlet property="cancelButton" destination="PaE-Jz-XrI" id="dfM-hf-b4s"/>
+                <outlet property="contactDetailTableView" destination="JJB-BR-jaH" id="G5g-WT-LmC"/>
+                <outlet property="doneButton" destination="QOJ-AC-Wuk" id="wJh-cP-R8S"/>
+                <outlet property="headerView" destination="Ro5-IY-PkN" id="di7-U8-rM4"/>
+                <outlet property="userImageView" destination="hEl-XT-ew5" id="zLa-8S-Y6C"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ro5-IY-PkN">
+                    <rect key="frame" x="0.0" y="44" width="414" height="250"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaE-Jz-XrI">
+                            <rect key="frame" x="20" y="10" width="53" height="33"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="cancelClicked:" destination="-1" eventType="touchUpInside" id="E2E-F7-WGe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOJ-AC-Wuk">
+                            <rect key="frame" x="353" y="10" width="41" height="33"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <action selector="doneClicked:" destination="-1" eventType="touchUpInside" id="ZF3-yV-G5O"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCp-CN-Fn8">
+                            <rect key="frame" x="127" y="38" width="160" height="160"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_photo" translatesAutoresizingMaskIntoConstraints="NO" id="hEl-XT-ew5">
+                                    <rect key="frame" x="20" y="20" width="120" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="Zt1-4G-DQK"/>
+                                        <constraint firstAttribute="width" constant="120" id="srv-QZ-pbi"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDr-vT-sNG">
+                                    <rect key="frame" x="100" y="100" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="SRA-Vp-tQD"/>
+                                        <constraint firstAttribute="height" constant="40" id="WAD-Qp-N4L"/>
+                                    </constraints>
+                                    <state key="normal" image="camera_button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="hEl-XT-ew5" firstAttribute="trailing" secondItem="PDr-vT-sNG" secondAttribute="trailing" id="B17-TV-QfT"/>
+                                <constraint firstItem="hEl-XT-ew5" firstAttribute="top" secondItem="MCp-CN-Fn8" secondAttribute="top" constant="20" id="TM0-vj-yqU"/>
+                                <constraint firstAttribute="trailing" secondItem="hEl-XT-ew5" secondAttribute="trailing" constant="20" id="Z1f-mi-Az8"/>
+                                <constraint firstItem="hEl-XT-ew5" firstAttribute="bottom" secondItem="PDr-vT-sNG" secondAttribute="bottom" id="eSi-fv-gwb"/>
+                                <constraint firstItem="hEl-XT-ew5" firstAttribute="leading" secondItem="MCp-CN-Fn8" secondAttribute="leading" constant="20" id="hLP-5T-YMS"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="MCp-CN-Fn8" firstAttribute="top" secondItem="Ro5-IY-PkN" secondAttribute="top" constant="38" id="HTk-PW-OAh"/>
+                        <constraint firstItem="PaE-Jz-XrI" firstAttribute="leading" secondItem="Ro5-IY-PkN" secondAttribute="leading" constant="20" id="P7O-kS-tYf"/>
+                        <constraint firstItem="PaE-Jz-XrI" firstAttribute="top" secondItem="Ro5-IY-PkN" secondAttribute="top" constant="10" id="ZeV-bI-rRc"/>
+                        <constraint firstItem="MCp-CN-Fn8" firstAttribute="centerX" secondItem="Ro5-IY-PkN" secondAttribute="centerX" id="aiZ-5I-mEp"/>
+                        <constraint firstItem="QOJ-AC-Wuk" firstAttribute="top" secondItem="Ro5-IY-PkN" secondAttribute="top" constant="10" id="bu8-Wa-85h"/>
+                        <constraint firstAttribute="bottom" secondItem="MCp-CN-Fn8" secondAttribute="bottom" constant="52" id="ecY-WL-1CB"/>
+                        <constraint firstAttribute="height" constant="250" id="hVq-zC-6Ok"/>
+                        <constraint firstAttribute="trailing" secondItem="QOJ-AC-Wuk" secondAttribute="trailing" constant="20" id="lPc-2q-4aA"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JJB-BR-jaH">
+                    <rect key="frame" x="0.0" y="294" width="414" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ro5-IY-PkN" secondAttribute="trailing" id="4GK-9F-ySq"/>
+                <constraint firstItem="Ro5-IY-PkN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="93P-BE-hhG"/>
+                <constraint firstItem="JJB-BR-jaH" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="DMO-vn-wek"/>
+                <constraint firstItem="JJB-BR-jaH" firstAttribute="top" secondItem="Ro5-IY-PkN" secondAttribute="bottom" id="feS-Cg-tyE"/>
+                <constraint firstItem="JJB-BR-jaH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hpd-4P-oz3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JJB-BR-jaH" secondAttribute="bottom" id="zSs-Rk-yz1"/>
+                <constraint firstItem="Ro5-IY-PkN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zy4-IJ-EQ9"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="128.57142857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="camera_button" width="41" height="41"/>
+        <image name="placeholder_photo" width="126" height="126"/>
+    </resources>
+</document>
