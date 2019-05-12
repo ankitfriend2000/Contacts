@@ -68,6 +68,10 @@ class ContactsTableViewController: UITableViewController {
         }
         if contactModelArray?.count == 0 {
             contactViewModelArray[firstChar] = nil
+            let indexOfChar = firstCharaterArray.firstIndex(of: firstChar)
+            if let validIdex = indexOfChar {
+                firstCharaterArray.remove(at: validIdex)
+            }
         } else {
             contactViewModelArray[firstChar] = contactModelArray
         }
