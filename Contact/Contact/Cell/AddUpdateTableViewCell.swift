@@ -8,8 +8,13 @@
 
 import UIKit
 
-class AddUpdateTableViewCell: UITableViewCell {
+protocol AddUpdateTableViewCellDelegate : class {
+    func didChangeValueForType(_ : ContactDetailType, value : String)
+}
 
+class AddUpdateTableViewCell: UITableViewCell {
+    
+    weak var delegate : AddUpdateTableViewCellDelegate?
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var valueTextField: UITextField!
     private let titleColor : UIColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 0.5)
@@ -39,5 +44,14 @@ class AddUpdateTableViewCell: UITableViewCell {
 }
 
 extension AddUpdateTableViewCell : UITextFieldDelegate {
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange,
+                                                       with: string)
+            delegate?.didChangeValueForType(cellDataSourceModel!.infoType, value: updatedText)
+        }
+        return true
+        
+    }
 }

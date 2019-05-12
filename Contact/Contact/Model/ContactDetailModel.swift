@@ -9,11 +9,11 @@
 import Foundation
 
 struct ContactDetailModel: Codable {
-    let id: Int
+    let id: Int?
     let firstName, lastName, email, phoneNumber: String
-    let profilePic: String
+    let profilePic: String?
     let favorite: Bool
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: String?
     
     enum CodingKeys: String, CodingKey {
         case id

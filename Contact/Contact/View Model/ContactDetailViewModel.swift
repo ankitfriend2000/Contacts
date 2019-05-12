@@ -31,8 +31,9 @@ struct ContactDetailViewModel {
     var emailAddress : String
     var firstName : String
     var lastName : String
+    var profilePic : String?
+    var contactID : Int?
     
-    var profilePic : String
     private var contactDetailModel : ContactDetailModel
     var contactDetailDataSource = [ContactDetailDataSourceModel]()
     var dataSource = [ContactAddUpdateDataSourceModel]()
@@ -46,6 +47,7 @@ struct ContactDetailViewModel {
         profilePic = contactDetail.profilePic
         firstName = contactDetail.firstName
         lastName = contactDetail.lastName
+        contactID = contactDetail.id
         createDatASoucrceForAddUpdate()
     }
     
@@ -56,6 +58,11 @@ struct ContactDetailViewModel {
         dataSource.append(ContactAddUpdateDataSourceModel(infoType: .phone, value: phoneNumber))
         dataSource.append(ContactAddUpdateDataSourceModel(infoType: .email, value: emailAddress))
         self.dataSource = dataSource
+    }
+    
+    func getUpdatedViewModel() -> ContactDetailModel{
+        let viewModel = ContactDetailModel(id:contactDetailModel.id , firstName: firstName, lastName: lastName, email: emailAddress, phoneNumber: phoneNumber, profilePic: profilePic, favorite: contactDetailModel.favorite, createdAt: contactDetailModel.createdAt, updatedAt: contactDetailModel.updatedAt)
+        return viewModel
     }
     
 }

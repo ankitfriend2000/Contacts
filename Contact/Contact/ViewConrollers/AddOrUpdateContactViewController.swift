@@ -21,6 +21,7 @@ class AddOrUpdateContactViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     private let gradient : CAGradientLayer = CAGradientLayer()
     var viewModel : ContactDetailViewModel?
+    private let networkManager = ContactNetworkManager()
 
     private let contactGreen : UIColor = UIColor(red: 80.0/255.0, green: 227.0/255.0, blue: 194.0/255.0, alpha: 1.0)
 
@@ -56,7 +57,25 @@ class AddOrUpdateContactViewController: UIViewController {
     }
     
     @IBAction func doneClicked(_ sender: Any) {
+        if viewModel?.contactID == nil {
+            
+        }else {
+            let getupdatedModel = viewModel?.getUpdatedViewModel()
+            guard let contactID = viewModel?.contactID else {
+                return
+            }
+            let successHandler: (ContactDetailModel) -> Void = { (contactModel) in
+                
+            }
+            let errorHandler: (String) -> Void = { (error) in
+                print(error)
+            }
+            let urlString = "https://gojek-contacts-app.herokuapp.com/contacts/\(contactID).json"
+            
+            ContactNetworkManager.sharedManager.update(urlString:urlString , model: getupdatedModel, successHandler: successHandler, errorHandler: errorHandler)
+        }
         
+        self.dismiss(animated: true, completion: nil)
     }
 
     
@@ -83,7 +102,10 @@ class AddOrUpdateContactViewController: UIViewController {
 }
 
 extension AddOrUpdateContactViewController : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let addUpdateCell = cell as! AddUpdateTableViewCell
+        addUpdateCell.cellDataSourceModel = viewModel?.dataSource[indexPath.row]
+    }
 }
 
 extension AddOrUpdateContactViewController : UITableViewDataSource {
@@ -93,14 +115,26 @@ extension AddOrUpdateContactViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactAddUpdate", for: indexPath) as! AddUpdateTableViewCell
+        cell.delegate = self
         cell.selectionStyle = .none
-        cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
+//        cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let addUpdateCell = cell as! AddUpdateTableViewCell
-        addUpdateCell.cellDataSourceModel = viewModel?.dataSource[indexPath.row]
+}
+
+extension AddOrUpdateContactViewController : AddUpdateTableViewCellDelegate {
+    func didChangeValueForType(_ contactType: ContactDetailType, value: String) {
+        switch contactType {
+        case .email:
+            viewModel?.emailAddress = value
+        case .firstname:
+            viewModel?.firstName = value
+        case .lastname:
+            viewModel?.lastName = value
+        case .phone:
+            viewModel?.phoneNumber = value
+        }
     }
+    
     
 }
