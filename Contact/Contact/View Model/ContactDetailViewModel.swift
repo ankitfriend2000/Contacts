@@ -65,4 +65,9 @@ struct ContactDetailViewModel {
         return viewModel
     }
     
+    func getAddModel() -> ContactAddModel {
+        let viewModel = ContactAddModel.init(firstName: firstName, lastName: lastName, email: emailAddress, phoneNumber: phoneNumber)
+        return viewModel
+    }
+    
 }

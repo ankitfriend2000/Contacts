@@ -12,12 +12,19 @@ protocol ContactsTableViewDelegate : class {
     func didSelectContactWithViewModel(_ viewModel : ContactViewModel)
 }
 
+protocol ContactsAddTableViewDelegate : class {
+    func addNewContact()
+}
+
 class ContactsTableViewController: UITableViewController {
     
     //Constants
     let rowHeight : CGFloat = 64.0
     let sectionHeaderHeight : CGFloat = 28.0
+    private let contactGreen : UIColor = UIColor(red: 80.0/255.0, green: 227.0/255.0, blue: 194.0/255.0, alpha: 1.0)
     weak var delegate : ContactsTableViewDelegate?
+    weak var addDelegate : ContactsAddTableViewDelegate?
+
     //datasources
     private var contactViewModelArray : [String :[ContactViewModel]] = [:]
     private var firstCharaterArray : [String] = []
@@ -28,6 +35,7 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(addButtonClicked))
+        self.navigationItem.rightBarButtonItem?.tintColor = contactGreen
         self.tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: "contactIdentifier")
         self.tableView.rowHeight = rowHeight
         self.tableView.tableFooterView = UIView.init()
@@ -36,7 +44,7 @@ class ContactsTableViewController: UITableViewController {
     }
     
     @objc func addButtonClicked() {
-        
+        addDelegate?.addNewContact()
     }
     
     private func fetchContacts() {

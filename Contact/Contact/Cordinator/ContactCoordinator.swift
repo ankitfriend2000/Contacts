@@ -21,6 +21,7 @@ class ContactCoordinator: Coordinator {
     func start() {
         let contactViewController = ContactsTableViewController.init(nibName: nil, bundle: nil)
         contactViewController.delegate = self
+        contactViewController.addDelegate = self
         self.presenter.pushViewController(contactViewController, animated: true)
         self.contactViewController = contactViewController
     }
@@ -33,6 +34,14 @@ extension ContactCoordinator : ContactsTableViewDelegate {
         let currentCoordinator = ContactDetailCoordinator.init(presenter: presenter, viewModel: viewModel)
         currentCoordinator.start()
         self.contactDetailCoordinator = currentCoordinator
+    }
+}
+
+extension ContactCoordinator : ContactsAddTableViewDelegate {
+    func addNewContact() {
+        let contactViewModel = ContactDetailViewModel(contactDetail: ContactDetailModel(id: nil, firstName: "", lastName: "", email: "", phoneNumber: "", profilePic: nil, favorite: false, createdAt: "", updatedAt: ""))
+        let addUpdateCoordinator = AddOrUpdateContactCoordinator(presenter: self.presenter, viewModel: contactViewModel)
+        addUpdateCoordinator.start()
     }
     
     

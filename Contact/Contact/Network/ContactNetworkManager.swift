@@ -53,27 +53,27 @@ class ContactNetworkManager {
         }
     }
     
-    func update<T: Codable>(urlString: String,
+    func update<T: Codable,R: Codable>(urlString: String,
                             headers: [String: String] = [:],
                             model: T?,
-                            successHandler: @escaping (T) -> Void,
+                            successHandler: @escaping (R) -> Void,
                             errorHandler: @escaping ErrorHandler) {
         updateOrAdd(urlString: urlString, headers: headers, model: model, hhtpMethod: "PUT", successHandler: successHandler, errorHandler: errorHandler)
     }
     
-    func post<T: Codable>(urlString: String,
+    func post<T: Codable,R: Codable>(urlString: String,
                             headers: [String: String] = [:],
                             model: T?,
-                            successHandler: @escaping (T) -> Void,
+                            successHandler: @escaping (R) -> Void,
                             errorHandler: @escaping ErrorHandler) {
         updateOrAdd(urlString: urlString, headers: headers, model: model, hhtpMethod: "POST", successHandler: successHandler, errorHandler: errorHandler)
     }
     
-    func updateOrAdd<T: Codable>(urlString: String,
+    func updateOrAdd<T: Codable,R: Codable>(urlString: String,
                            headers: [String: String] = [:],
                            model: T?,
                            hhtpMethod: String,
-                           successHandler: @escaping (T) -> Void,
+                           successHandler: @escaping (R) -> Void,
                            errorHandler: @escaping ErrorHandler) {
         
         guard let url = URL(string: urlString) else {
@@ -102,10 +102,10 @@ class ContactNetworkManager {
                 
                 if self.isSuccessCode(response) {
                     guard let data = data else {
-                        print("Unable to parse the response in given type \(T.self)")
+                        print("Unable to parse the response in given type \(R.self)")
                         return errorHandler(ContactNetworkManager.genericError)
                     }
-                    if let responseObject = try? JSONDecoder().decode(T.self, from: data) {
+                    if let responseObject = try? JSONDecoder().decode(R.self, from: data) {
                         successHandler(responseObject)
                         return
                     }
@@ -117,7 +117,7 @@ class ContactNetworkManager {
     
     
     private func isSuccessCode(_ statusCode: Int) -> Bool {
-        return statusCode == 200
+        return statusCode == 200 || statusCode == 201
     }
     
     private func isSuccessCode(_ response: URLResponse?) -> Bool {

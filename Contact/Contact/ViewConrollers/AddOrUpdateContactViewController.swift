@@ -57,10 +57,23 @@ class AddOrUpdateContactViewController: UIViewController {
     }
     
     @IBAction func doneClicked(_ sender: Any) {
+        guard let getupdatedModel = viewModel?.getUpdatedViewModel() else {
+            return
+        }
+        guard getupdatedModel.firstName.count > 0 , getupdatedModel.lastName.count > 0 , getupdatedModel.email.count > 0 , getupdatedModel.phoneNumber.count > 0 else {
+            return
+        }
         if viewModel?.contactID == nil {
+            let successHandler: (ContactDetailModel) -> Void = { (contactModel) in
+                print(contactModel)
+            }
+            let errorHandler: (String) -> Void = { (error) in
+                print(error)
+            }
+            let urlString = "https://gojek-contacts-app.herokuapp.com/contacts.json"
             
+            ContactNetworkManager.sharedManager.post(urlString:urlString , model: viewModel?.getAddModel(), successHandler: successHandler, errorHandler: errorHandler)
         }else {
-            let getupdatedModel = viewModel?.getUpdatedViewModel()
             guard let contactID = viewModel?.contactID else {
                 return
             }

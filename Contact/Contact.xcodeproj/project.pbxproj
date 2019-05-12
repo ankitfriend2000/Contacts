@@ -37,6 +37,7 @@
 		B96182A32287EFCB00957141 /* AddOrUpdateContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A22287EFCB00957141 /* AddOrUpdateContactCoordinator.swift */; };
 		B96182A622882C3C00957141 /* AddUpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A422882C3C00957141 /* AddUpdateTableViewCell.swift */; };
 		B96182A722882C3C00957141 /* AddUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */; };
+		B96182A92288885C00957141 /* ContactAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A82288885C00957141 /* ContactAddModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		B96182A22287EFCB00957141 /* AddOrUpdateContactCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrUpdateContactCoordinator.swift; sourceTree = "<group>"; };
 		B96182A422882C3C00957141 /* AddUpdateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdateTableViewCell.swift; sourceTree = "<group>"; };
 		B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddUpdateTableViewCell.xib; sourceTree = "<group>"; };
+		B96182A82288885C00957141 /* ContactAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAddModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			children = (
 				B96182772285941200957141 /* ContactModel.swift */,
 				B96182902286C2D500957141 /* ContactDetailModel.swift */,
+				B96182A82288885C00957141 /* ContactAddModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				B96182892285FF1100957141 /* ImageViewExtension.swift in Sources */,
 				B96182A622882C3C00957141 /* AddUpdateTableViewCell.swift in Sources */,
 				B961827D2285962D00957141 /* ContactCoordinator.swift in Sources */,
+				B96182A92288885C00957141 /* ContactAddModel.swift in Sources */,
 				B961829D22870B3200957141 /* ImageExtension.swift in Sources */,
 				B961826E228589D100957141 /* Coordinator.swift in Sources */,
 				B96182822285D48100957141 /* ContactTableViewCell.swift in Sources */,
