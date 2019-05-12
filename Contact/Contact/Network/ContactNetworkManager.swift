@@ -115,9 +115,34 @@ class ContactNetworkManager {
         }
     }
     
+    func delete(urlString: String,
+                successHandler: @escaping () -> Void,
+                errorHandler: @escaping ErrorHandler) {
+        guard let url = URL(string: urlString) else {
+            return errorHandler("Unable to create URL from given string")
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        networkQueue.async {
+            URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+                if let error = error {
+                    print(error.localizedDescription)
+                    errorHandler(ContactNetworkManager.genericError)
+                    return
+                }
+                
+                if self.isSuccessCode(response) {
+                    successHandler()
+                    return
+                }
+                errorHandler(ContactNetworkManager.genericError)
+            }).resume()
+        }
+    }
+    
     
     private func isSuccessCode(_ statusCode: Int) -> Bool {
-        return statusCode == 200 || statusCode == 201
+        return statusCode == 200 || statusCode == 201 || statusCode == 204
     }
     
     private func isSuccessCode(_ response: URLResponse?) -> Bool {

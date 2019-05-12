@@ -41,10 +41,62 @@ class ContactsTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView.init()
         self.title = "Contact"
         fetchContacts()
+        NotificationCenter.default.addObserver(self, selector: #selector(deletedContact(_:)), name: .deleteContactNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addedContact(_:)), name: .addContactNotification, object: nil)
     }
     
     @objc func addButtonClicked() {
         addDelegate?.addNewContact()
+    }
+    
+    @objc func deletedContact(_ notification: Notification){
+        let mycontactDetailModel  = notification.object as? ContactViewModel
+        guard let contactDetailModel = mycontactDetailModel else {
+            return
+        }
+        let firstChar = String((contactDetailModel.fullname.first)!).capitalized
+        var contactModelArray = contactViewModelArray[firstChar]
+        var index = -1
+        for (i,contacts) in contactModelArray!.enumerated() {
+            if contacts.contactID == contactDetailModel.contactID {
+                index = i
+                break
+            }
+        }
+        if index != -1 {
+            contactModelArray?.remove(at: index)
+        }
+        if contactModelArray?.count == 0 {
+            contactViewModelArray[firstChar] = nil
+        } else {
+            contactViewModelArray[firstChar] = contactModelArray
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    @objc func addedContact(_ notification: Notification){
+        let mycontactDetailModel  = notification.object as? ContactDetailModel
+        guard let contactDetailModel = mycontactDetailModel else {
+            return
+        }
+        let contactModel = ContactViewModel(contact: ContactModel(id: (contactDetailModel.id)!, firstName: contactDetailModel.firstName, lastName: contactDetailModel.lastName, profilePic: contactDetailModel.profilePic!, favorite: contactDetailModel.favorite, url:"https://gojek-contacts-app.herokuapp.com/contacts/\((contactDetailModel.id)!).json"))
+        let firstChar = String((contactModel.fullname.first)!).capitalized
+        var contactModelArray = contactViewModelArray[firstChar]
+        if contactModelArray == nil {
+            contactModelArray = [ContactViewModel]()
+            firstCharaterArray.append(firstChar)
+            firstCharaterArray = firstCharaterArray.sorted()
+        }
+        contactModelArray?.append(contactModel)
+        contactModelArray = contactModelArray?.sorted(by: { (first, second) -> Bool in
+            return first.fullname < second.fullname
+        })
+        contactViewModelArray[firstChar] = contactModelArray
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     private func fetchContacts() {

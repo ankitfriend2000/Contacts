@@ -56,8 +56,11 @@ class ContactDetailViewController: UIViewController {
         label.text = "Delete"
         label.textColor = UIColor.red
         footerView = UIView.init()
+        footerView?.isUserInteractionEnabled = true
         footerView?.addSubview(label)
         footerView?.backgroundColor = UIColor.white
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(deleteContact))
+        footerView?.addGestureRecognizer(tapGesture)
         self.contactDetailTableView.tableFooterView = footerView
         self.contactDetailTableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         contactDetailTableView.register(UINib(nibName: "TitleDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "contactDetail")
@@ -137,6 +140,22 @@ class ContactDetailViewController: UIViewController {
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
         
+    }
+    
+    @objc func deleteContact() {
+        guard let contactID = contactDetailViewModel?.contactID else {
+            return
+        }
+        let contactUrl = "https://gojek-contacts-app.herokuapp.com/contacts/\(contactID).json"
+        ContactNetworkManager.sharedManager.delete(urlString:contactUrl, successHandler: {
+            print("deleted")
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .deleteContactNotification, object: self.viewModel, userInfo: [:])
+                self.navigationController?.popViewController(animated: true)
+            }
+        }) { (error) in
+            print(error)
+        }
     }
     
     private func findShadowImage(under view: UIView) -> UIImageView? {

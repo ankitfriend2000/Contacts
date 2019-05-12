@@ -38,6 +38,7 @@
 		B96182A622882C3C00957141 /* AddUpdateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A422882C3C00957141 /* AddUpdateTableViewCell.swift */; };
 		B96182A722882C3C00957141 /* AddUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */; };
 		B96182A92288885C00957141 /* ContactAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A82288885C00957141 /* ContactAddModel.swift */; };
+		B96182AB2288BCFD00957141 /* NotifcationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182AA2288BCFD00957141 /* NotifcationName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		B96182A422882C3C00957141 /* AddUpdateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdateTableViewCell.swift; sourceTree = "<group>"; };
 		B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddUpdateTableViewCell.xib; sourceTree = "<group>"; };
 		B96182A82288885C00957141 /* ContactAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAddModel.swift; sourceTree = "<group>"; };
+		B96182AA2288BCFD00957141 /* NotifcationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifcationName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			children = (
 				B96182882285FF1100957141 /* ImageViewExtension.swift */,
 				B961829C22870B3200957141 /* ImageExtension.swift */,
+				B96182AA2288BCFD00957141 /* NotifcationName.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				B961827022858A1D00957141 /* ApplicationCoordinator.swift in Sources */,
 				B961828C22860A3900957141 /* ContactDetailViewController.swift in Sources */,
 				B96182932286C41200957141 /* ContactDetailViewModel.swift in Sources */,
+				B96182AB2288BCFD00957141 /* NotifcationName.swift in Sources */,
 				B961827F2285B86800957141 /* ContactNetworkManager.swift in Sources */,
 				B961829A2287036400957141 /* TitleDescriptionTableViewCell.swift in Sources */,
 			);

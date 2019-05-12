@@ -15,6 +15,8 @@ struct ContactViewModel {
     var isFavourite : Bool
     var detailUrl : String
     var favouriteImageUrl : String
+    var contactUrl : String
+    var contactID : Int
     
     init(contact: ContactModel) {
         fullname = contact.firstName + " " + contact.lastName
@@ -29,6 +31,8 @@ struct ContactViewModel {
         } else {
             favouriteImageUrl = "favourite_button"
         }
+        contactUrl = contact.url
+        contactID = contact.id
     }
     
 }

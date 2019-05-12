@@ -66,6 +66,9 @@ class AddOrUpdateContactViewController: UIViewController {
         if viewModel?.contactID == nil {
             let successHandler: (ContactDetailModel) -> Void = { (contactModel) in
                 print(contactModel)
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .addContactNotification, object: contactModel, userInfo: [:])
+                }
             }
             let errorHandler: (String) -> Void = { (error) in
                 print(error)
