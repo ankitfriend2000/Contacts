@@ -39,6 +39,7 @@
 		B96182A722882C3C00957141 /* AddUpdateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */; };
 		B96182A92288885C00957141 /* ContactAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182A82288885C00957141 /* ContactAddModel.swift */; };
 		B96182AB2288BCFD00957141 /* NotifcationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182AA2288BCFD00957141 /* NotifcationName.swift */; };
+		B96182AE22895DCE00957141 /* ContactDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96182AD22895DCE00957141 /* ContactDetailTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddUpdateTableViewCell.xib; sourceTree = "<group>"; };
 		B96182A82288885C00957141 /* ContactAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAddModel.swift; sourceTree = "<group>"; };
 		B96182AA2288BCFD00957141 /* NotifcationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifcationName.swift; sourceTree = "<group>"; };
+		B96182AD22895DCE00957141 /* ContactDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		B961823D2285893F00957141 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				B96182AC22895D2200957141 /* views */,
 				B9618296228702F500957141 /* Assets.xcassets */,
 				B96182952287022E00957141 /* Cell */,
 				B9618294228701FA00957141 /* ViewConrollers */,
@@ -159,7 +162,6 @@
 				B961823E2285893F00957141 /* AppDelegate.swift */,
 				B96182472285894100957141 /* LaunchScreen.storyboard */,
 				B961824A2285894100957141 /* Info.plist */,
-				B96182852285DCCD00957141 /* CicularImageView.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -169,6 +171,7 @@
 			children = (
 				B96182532285894100957141 /* ContactTests.swift */,
 				B96182552285894100957141 /* Info.plist */,
+				B96182AD22895DCE00957141 /* ContactDetailTests.swift */,
 			);
 			path = ContactTests;
 			sourceTree = "<group>";
@@ -262,6 +265,14 @@
 				B96182A522882C3C00957141 /* AddUpdateTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		B96182AC22895D2200957141 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B96182852285DCCD00957141 /* CicularImageView.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96182542285894100957141 /* ContactTests.swift in Sources */,
+				B96182AE22895DCE00957141 /* ContactDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

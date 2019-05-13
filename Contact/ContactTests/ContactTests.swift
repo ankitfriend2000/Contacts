@@ -18,17 +18,15 @@ class ContactTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testContactViewModel() {
+        let contact = ContactModel(id: 1, firstName: "Ankit", lastName: "Kedia", profilePic: "abc.jpg", favorite: false, url: "https://gojek-contacts-app.herokuapp.com/contacts/1.json")
+        let contactViewModel = ContactViewModel(contact: contact)
+        XCTAssertEqual(contact.url, contactViewModel.contactUrl)
+        XCTAssertEqual(contact.id, contactViewModel.contactID)
+        XCTAssertEqual(contact.profilePic, contactViewModel.imageUrl)
+        XCTAssertEqual(contact.favorite, contactViewModel.isFavourite)
+        XCTAssertEqual(contact.firstName+" "+contact.lastName, contactViewModel.fullname)
     }
 
 }
