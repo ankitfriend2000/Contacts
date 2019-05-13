@@ -67,6 +67,7 @@ class ContactDetailViewController: UIViewController {
 
         initializeHeaderView()
         fetchContactsDetail()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateContact(_:)), name: .updateContactNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,6 +141,20 @@ class ContactDetailViewController: UIViewController {
         // Present the view controller modally.
         self.present(composeVC, animated: true, completion: nil)
         
+    }
+    
+    @objc func updateContact(_ notification: Notification){
+        let mycontactDetailModel  = notification.object as? ContactDetailModel
+        guard let contactDetailModel = mycontactDetailModel else {
+            return
+        }
+        self.contactDetailViewModel = ContactDetailViewModel.init(contactDetail: contactDetailModel)
+        let contactModel = ContactViewModel(contact: ContactModel(id: (contactDetailModel.id)!, firstName: contactDetailModel.firstName, lastName: contactDetailModel.lastName, profilePic: contactDetailModel.profilePic!, favorite: contactDetailModel.favorite, url:"https://gojek-contacts-app.herokuapp.com/contacts/\((contactDetailModel.id)!).json"))
+        viewModel = contactModel
+        DispatchQueue.main.async {
+            self.initializeHeaderView()
+            self.contactDetailTableView.reloadData()
+        }
     }
     
     @objc func deleteContact() {

@@ -81,7 +81,9 @@ class AddOrUpdateContactViewController: UIViewController {
                 return
             }
             let successHandler: (ContactDetailModel) -> Void = { (contactModel) in
-                
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .updateContactNotification, object: contactModel, userInfo: [:])
+                }
             }
             let errorHandler: (String) -> Void = { (error) in
                 print(error)

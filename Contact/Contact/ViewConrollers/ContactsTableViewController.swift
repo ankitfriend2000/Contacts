@@ -43,6 +43,7 @@ class ContactsTableViewController: UITableViewController {
         fetchContacts()
         NotificationCenter.default.addObserver(self, selector: #selector(deletedContact(_:)), name: .deleteContactNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(addedContact(_:)), name: .addContactNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateContact(_:)), name: .updateContactNotification, object: nil)
     }
     
     @objc func addButtonClicked() {
@@ -97,6 +98,31 @@ class ContactsTableViewController: UITableViewController {
         contactModelArray = contactModelArray?.sorted(by: { (first, second) -> Bool in
             return first.fullname < second.fullname
         })
+        contactViewModelArray[firstChar] = contactModelArray
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    @objc func updateContact(_ notification: Notification){
+        let mycontactDetailModel  = notification.object as? ContactDetailModel
+        guard let contactDetailModel = mycontactDetailModel else {
+            return
+        }
+        let contactModel = ContactViewModel(contact: ContactModel(id: (contactDetailModel.id)!, firstName: contactDetailModel.firstName, lastName: contactDetailModel.lastName, profilePic: contactDetailModel.profilePic!, favorite: contactDetailModel.favorite, url:"https://gojek-contacts-app.herokuapp.com/contacts/\((contactDetailModel.id)!).json"))
+        let firstChar = String((contactModel.fullname.first)!).capitalized
+        var contactModelArray = contactViewModelArray[firstChar]
+        var index = -1
+        for (i,contacts) in contactModelArray!.enumerated() {
+            if contacts.contactID == contactModel.contactID {
+                index = i
+                break
+            }
+        }
+        if index == -1 {
+            return
+        }
+        contactModelArray?[index] = contactModel
         contactViewModelArray[firstChar] = contactModelArray
         DispatchQueue.main.async {
             self.tableView.reloadData()
